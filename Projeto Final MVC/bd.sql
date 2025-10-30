@@ -15,6 +15,7 @@ Table `projeto_final`
     )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
+
 CREATE TABLE IF NOT EXISTS `projeto_final`.`formacaoAcademica` (
     `idformacaoAcademica` INT(11)NOT NULL AUTO_INCREMENT,
     `idusuario` INT(11)NOT NULL,
@@ -27,3 +28,19 @@ CREATE TABLE IF NOT EXISTS `projeto_final`.`formacaoAcademica` (
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
+
+CREATE TABLE `projeto_final`.`experienciaprofissional` (
+    `idexperienciaprofissional` INT NOT NULL AUTO_INCREMENT,
+    `idusuario` INT NOT NULL,
+    `inicio` DATE NULL,
+    `fim` DATE NULL,
+    `empresa` VARCHAR(45) NULL,
+    `descricao` VARCHAR(45) NULL,
+    PRIMARY KEY (`idexperienciaprofissional`),
+    INDEX `idUser_idx` (`idusuario` ASC),
+    CONSTRAINT `idUser`
+    FOREIGN KEY (`idusuario`)
+    REFERENCES `projeto_final`.`usuario` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
